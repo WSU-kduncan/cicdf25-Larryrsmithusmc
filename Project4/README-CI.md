@@ -15,13 +15,13 @@
   - Configuring GitHub Repository Secrets:
 	- To create a PAT, I went and logged in to dockerhub. I then went to `account settings` there I clicked on `Personal access tokens` where you can click `Generate new token` to creat the new token for github
 	- To create my secrets I went to `github` -> `setting` -> `Secrets and variables` -> `Actions` -> `New repository secret` then filled out what I wanted my new secrets to be.
-	- The first secret was my docker user name which will provide my docker user name via the secret. The second holds my PAT to allow github to log into my dockerhub with both the user name and PAT. 
+	- The first secret was my docker username which will provide my docker username. The second holds my PAT to allow github to log into my dockerhub with both the user name and PAT. 
   - CI with GitHub Actions
-	- Explanation of workflow trigger
-	- Explanation of workflow steps
+	- So the Workflow trigger is what you set up to cause the workflow to take action. Like in the one I set up I want to to trigger when there is a push to the main branch. So the workflow will only trigger if there is a push to the main branch.
+	- So workflow steps is the flow of actions being taken. My flow steps starts with checkout which pulls my repo into the runner to be used. Then sets up docker buildx, logs into docker using my secrets, and finally builds and pushes to dockerhub using my dockerfile.
 	- Explanation / highlight of values that need updated if used in a different repository
-		- changes in workflow 
-		- changes in repository
+		- You would need to change how to navigate to the location of the Dockerfile. You would also need to check your secrets an see if they need updated. Might be the same you never know. I would make mine the same.
+		- Transfer all files and folders including Dockerfile and .github/workflows/ that you are going to be using if its a new repository. Make sure to set up your secrets.
 	- Link to workflow file in your GitHub repository
   - Testing & Validating
 	- How to test that your workflow did its tasking
