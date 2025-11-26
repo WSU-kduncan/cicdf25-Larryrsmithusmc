@@ -1,6 +1,6 @@
 **Building a web service container:**
   - Explanation and links to web site content
-	- The web site content I created using chatgpt consisted of a [index](web-content/index.html) and [about](web-content/about.html) html file that housed the content of the web site and [styles](styles.css) file to handle the apperance and layout. I had to adjust both the index and styles file for my image.
+	- The web site content I created using chatgpt consisted of a [index](web-content/index.html) and [about](web-content/about.html) html file that housed the content of the web site and [styles](web-content/styles.css) file to handle the apperance and layout. I had to adjust both the index and styles file for my image.
   - Explanation of and link to `Dockerfile`
 	- The dockerfile sets up the container environment/base image and copied over our web-content
 [Dockerfile](web-content/Dockerfile)
