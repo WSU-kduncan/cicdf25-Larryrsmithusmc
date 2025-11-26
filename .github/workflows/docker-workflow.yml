@@ -1,9 +1,9 @@
 name: Build and Push Docker image to DockerHub
+# now triggers only when a tag is used
 on:
   push:
-    branches: [main]
-env:
-  DOCKER_HUB_REPO: project4
+    tags:
+      - 'v*.*.*'
 jobs:
   build_and_push:
     name: Build and Push Docker image to Docker Hub
@@ -18,11 +18,25 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
+# create meta data and tags
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: larryrsmith/project4
+          tags: |
+            type=ref,event=tag
+            type=semver,pattern={{version}} # ex 3.4.1
+            type=semver,pattern={{major}} # ex 3
+            type=semver,pattern={{major}}.{{minor}} # ex 3.4
+            latest # for latest
+
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
           context: ./Project4/web-content
           file: ./Project4/web-content/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_HUB_REPO }}:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }} 
 
