@@ -22,7 +22,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./Project4/web-content
-          file: ./Project/web-content/Dockerfile
+          file: ./Project4/web-content/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_HUB_REPO }}:latest
 
