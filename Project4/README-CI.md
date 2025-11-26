@@ -43,6 +43,6 @@
   - Testing & Validating
 	- To test this I did a normal push without a tag to see if anything happened in the actions tab. When nothing happened I then pushed with a tag. The workflow kicked in and actions showed a inprogress/completed workflow after a little time.
 	- Same as before I went and killed the old container with the old content and started a new one. You could set up a bash script for this and I think thats what the next project is doing with hooks. I just did it manually. `docker stop c00801132e92` -> `docker pull larryrsmith/project4:latest` -> `docker run -d -p 8080:80 larryrsmith/project4:latest` and everything worked. The changes took place on the website.
-	- [Before V change](Before.png)
-	- [After V change](After.png)
+	- ![Before V change](Before.png)
+	- ![After V change](After.png)
 	- Link to your DockerHub repository with evidence of the tag set
