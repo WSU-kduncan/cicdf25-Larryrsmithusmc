@@ -30,9 +30,9 @@
 
 **Semantic Versioning**
   - Generating tags
-	- How to see tags in a git repository
-	- How to generate a tag in a git repository
-	- How to push a tag in a git repository to GitHub
+	- To see tags in your repository click the main tab then select tags.
+	- To generate a tag in a git repository you need to add a tag by `git tag -a v1.1.2` then push it. 
+	- To push a tag in a git repository to GitHub `git push origin v1.1.2`
   - Semantic Versioning Container Images with GitHub Actions
 	- Now it is only triggered when a git tag is pushed 
 	- So workflow steps is the flow of actions being taken. My flow steps starts with checkout which pulls my repo into the runner to be used. Then sets up docker buildx, logs into docker using my secrets, docker meta data asign image and tags with type ref event tag `This type handles Git ref (or reference) for the following events:tag ; eg. refs/tags/v1.0.0` using semver for patterns, and finally builds and pushes to dockerhub using my dockerfile attaching metadata/version to it.
@@ -45,4 +45,5 @@
 	- Same as before I went and killed the old container with the old content and started a new one. You could set up a bash script for this and I think thats what the next project is doing with hooks. I just did it manually. `docker stop c00801132e92` -> `docker pull larryrsmith/project4:latest` -> `docker run -d -p 8080:80 larryrsmith/project4:latest` and everything worked. The changes took place on the website.
 	- ![Before V change](Before.png)
 	- ![After V change](After.png)
-	- Link to your DockerHub repository with evidence of the tag set
+	- [DockerHub repository](https://hub.docker.com/repository/docker/larryrsmith/project4/general) 
+	- ![DockerHub](DHUB.png)
