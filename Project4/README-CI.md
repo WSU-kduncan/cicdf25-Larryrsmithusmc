@@ -11,7 +11,7 @@
   - How to run the container that will serve the web application from the image build by the `dockerfile`
 	- So first I had to pull the docker image to my instance `docker pull larryrsmith/project4:latest` then all I had to do was run it `docker run -d -p 8080:80 larryrsmith/project4:latest` Host port 8080 container port 80
 
-**GitHub Actions and DockerHub
+**GitHub Actions and DockerHub**
   - Configuring GitHub Repository Secrets:
 	- To create a PAT, I went and logged in to dockerhub. I then went to `account settings` there I clicked on `Personal access tokens` where you can click `Generate new token` to creat the new token for github
 	- To create my secrets I went to `github` -> `setting` -> `Secrets and variables` -> `Actions` -> `New repository secret` then filled out what I wanted my new secrets to be.
@@ -22,8 +22,8 @@
 	- Explanation / highlight of values that need updated if used in a different repository
 		- You would need to change how to navigate to the location of the Dockerfile. You would also need to check your secrets an see if they need updated. Might be the same you never know. I would make mine the same.
 		- Transfer all files and folders including Dockerfile and .github/workflows/ that you are going to be using if its a new repository. Make sure to set up your secrets.
-	- Link to workflow file in your GitHub repository
+	- [WorkFlow](https://github.com/WSU-kduncan/cicdf25-Larryrsmithusmc/blob/main/Project4/docker-workflow.yml)
   - Testing & Validating
-	- How to test that your workflow did its tasking
-	- How to verify that the image in DockerHub works when a container is run using the image
+	- For me I checked in my repo first under the actions tab. I had about 5 failed attempts before I got it working. Then after it was working I check on dockerhubs end by looking the last pushed time.
+	- I went and killed the old container with the old content and started a new one. You could set up a bash script for this and I think thats what the next project is doing with hooks. I just did it manually. `docker stop c00801132e92` -> `docker pull larryrsmith/project4:latest` -> `docker run -d -p 8080:80 larryrsmith/project4:latest` and everything worked.
 	- [DockerHub repository](https://hub.docker.com/repository/docker/larryrsmith/project4/general)
