@@ -27,3 +27,22 @@
 	- For me I checked in my repo first under the actions tab. I had about 5 failed attempts before I got it working. Then after it was working I check on dockerhubs end by looking the last pushed time.
 	- I went and killed the old container with the old content and started a new one. You could set up a bash script for this and I think thats what the next project is doing with hooks. I just did it manually. `docker stop c00801132e92` -> `docker pull larryrsmith/project4:latest` -> `docker run -d -p 8080:80 larryrsmith/project4:latest` and everything worked.
 	- [DockerHub repository](https://hub.docker.com/repository/docker/larryrsmith/project4/general)
+
+**Semantic Versioning**
+  - Generating tags
+	- How to see tags in a git repository
+	- How to generate a tag in a git repository
+	- How to push a tag in a git repository to GitHub
+  - Semantic Versioning Container Images with GitHub Actions
+	- Now it is only triggered when a git tag is pushed 
+	- So workflow steps is the flow of actions being taken. My flow steps starts with checkout which pulls my repo into the runner to be used. Then sets up docker buildx, logs into docker using my secrets, docker meta data asign image and tags with type ref event tag `This type handles Git ref (or reference) for the following events:tag ; eg. refs/tags/v1.0.0` using semver for patterns, and finally builds and pushes to dockerhub using my dockerfile attaching metadata/version to it.
+	- Explanation / highlight of values that need updated if used in a different repository
+	  - Same as before You would need to change how to navigate to the location of the Dockerfile. You would also need to check your secrets an see if they need updated. Might be the same you never know. I would make mine the same
+	  - Same as before Transfer all files and folders including Dockerfile and .github/workflows/ that you are going to be using if its a new repository. Make sure to set up your secrets.
+	- [WorkFlow](https://github.com/WSU-kduncan/cicdf25-Larryrsmithusmc/blob/main/Project4/docker-workflow.yml)
+  - Testing & Validating
+	- To test this I did a normal push without a tag to see if anything happened in the actions tab. When nothing happened I then pushed with a tag. The workflow kicked in and actions showed a inprogress/completed workflow after a little time.
+	- Same as before I went and killed the old container with the old content and started a new one. You could set up a bash script for this and I think thats what the next project is doing with hooks. I just did it manually. `docker stop c00801132e92` -> `docker pull larryrsmith/project4:latest` -> `docker run -d -p 8080:80 larryrsmith/project4:latest` and everything worked. The changes took place on the website.
+	- [Before V change](Before.png)
+	- [After V change](After.png)
+	- Link to your DockerHub repository with evidence of the tag set
