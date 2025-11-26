@@ -21,8 +21,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./web-content
-          file: ./web-content/Dockerfile
+          context: ./Project4/web-content
+          file: ./Project/web-content/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_HUB_REPO }}:latest
 
