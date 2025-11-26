@@ -52,6 +52,6 @@
   - Continuous Integration Project Overview
 	- To allow auto updates to a docker image through github actions based on triggers set using a github workflow.
 	- Docker to build/push/pull/run an image. Github secrets to allow access to dockerhub. Github actions to automatically build/update an image. A Github workflow to decide what actions to take and what triggers those actions.
-	- ![Diagram](Flow.png)
+	- ![Diagram](Flow.jpg)
   - Resources Section
 	- Mostly used your videos and followed along the steps. I did need to use https://github.com/marketplace/actions/docker-metadata-action because I didnt think you covered it enough. It took some time to figure out. I did ask chatgpt about the labels part at the end but I still didnt get a good understanding in the end. They was in the examples on the website so I left it in there. If I remember I will ask after the break.
