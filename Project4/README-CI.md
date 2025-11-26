@@ -54,4 +54,4 @@
 	- Docker to build/push/pull/run an image. Github secrets to allow access to dockerhub. Github actions to automatically build/update an image. A Github workflow to decide what actions to take and what triggers those actions.
 	- ![Diagram](Flow.png)
   - Resources Section
-	- Mostly used your videos and followed along the steps. I did need to use https://github.com/marketplace/actions/docker-metadata-action it took some time to figure out but worked through it. I did ask chatgpt about the labels part at the end but I still didnt get a good understanding in the end. They was in the examples on the website so I left it in there. If I remember I will ask after the break.
+	- Mostly used your videos and followed along the steps. I did need to use https://github.com/marketplace/actions/docker-metadata-action it took some time to figure out but worked through it. I did ask chatgpt about the labels part at the end but I still didnt get a good understanding of what its doing. The labels were in the examples on the website so I left them in there. If I remember I will ask after the break.
