@@ -50,7 +50,7 @@
 
 **Project Description & Diagram**
   - Continuous Integration Project Overview
-	- To allow auto updates to a docker image through github actions based on triggers set using a github workflow. This way as long as someone has the secret and token set up they can push updates and the workflow will handle the rest.
+	- To allow auto updates to a docker image through github actions based on triggers set using a github workflow. This way as long as someone has the secret and token set up they can push updates to github and the workflow will handle the rest.
 	- Docker to build/push/pull/run an image. Github secrets to allow access to dockerhub. Github actions to automatically build/update an image. A Github workflow to decide what actions to take and what triggers those actions.
 	- ![Diagram](Flow.png)
   - Resources Section
