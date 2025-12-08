@@ -1,7 +1,7 @@
 ## Project Description & Diagram
 
 1. Continuous Deployment Project Overview
-  - The goal of this project was to implament Continous deployment of a docker container using webhooks via dockerhub and github.
+  - The goal of this project was to implement Continous deployment of a docker container using webhooks via dockerhub and github.
   - The tools used for this project, github workflow that triggered when a push with tags was pushed to github resualting in a docker build and push, dockerhub webhooks that sent webhook payloads to the ec2 instance when a push occured, webhook to recive the payload on the ec2 instance and trigger when conditions where met to run a script, a bash script to stop, rm, pull, run a docker container. All resaulting in continous deployment of our web site updates.
 ![Diagram](Workflow-CD.png)
 
