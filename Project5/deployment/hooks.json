@@ -1,0 +1,7 @@
+[
+        {
+                "id": "P5-hook",
+                "execute-command": "/home/ubuntu/deployment.sh",
+                "command-working-directory": "/home/ubuntu"
+        }
+]
