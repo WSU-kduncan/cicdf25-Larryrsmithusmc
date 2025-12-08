@@ -1,3 +1,10 @@
+## Project Description & Diagram
+
+1. Continuous Deployment Project Overview
+  - The goal of this project was to implament Continous deployment of a docker container using webhooks via dockerhub and github.
+  - The tools used for this project, github workflow that triggered when a push with tags was pushed to github resualting in a docker build and push, dockerhub webhooks that sent webhook payloads to the ec2 instance when a push occured, webhook to recive the payload on the ec2 instance and trigger when conditions where met to run a script, a bash script to stop, rm, pull, run a docker container. All resaulting in continous deployment of our web site updates.
+![Diagram](Workflow-CD.png)
+
 ## Script a Refresh
 
 1. EC2 Instance Details: [I used this yml file](P5.yml)
@@ -54,11 +61,26 @@
   - Summary of webhook service file contents
 	- It has some defult content then the parts that I changed was condition path to the path of my json file under unit and under service I canged the execstart part so on start i uses my hooks and start monitoing logs. 
   - How to enable and start the webhook service
-	- `sudo systemctl enable webhook` `sudo systemctl start webhook` To ensure all the changes to place `sudo systemctl stop webhook` `sudo systemctl daemon-reload` `sudo systemctl start webhook`
+	- `sudo systemctl enable webhook` `sudo systemctl start webhook` To ensure all the changes occured `sudo systemctl stop webhook` `sudo systemctl daemon-reload` `sudo systemctl start webhook`
   - How to verify webhook service is capturing payloads and triggering bash script
 	- `sudo journalctl -u webhook -f` checked the logs
 ![Logs](webhooklogs.png)
   - [Service File](deployment/webhook.service.file)
 
+## Send a payload
 
+1. Configuring a Payload Sender
+  - Justification for selecting GitHub or DockerHub as the payload sender
+	- I chose DokcerHub bacause in your class it seemed like the easier one to perform and it turned out to be very simple.
+  - How to enable your selection to send payloads to the EC2 `webhook` listener
+	- To enable it to send payloads, I went to dockerhub website, clicked on my project5 repository, selected webhooks, named it and pasted my url `http://34.225.80.77:9000/hooks/P5-hook` then clicked the add sign and done.
+  - Explain what triggers will send a payload to the EC2 `webhook` listener
+	- Anytime images are pushed dockerhub will trigger a payload to be sent. This is why we needed to set up trigger rules on our hooks.
+  - How to verify a successful payload delivery
+	- In the logs any time you have a `incoming HTTP POST request` and it checks your triggers after you have recived a successful payload
+  - How to validate that your webhook *only triggers* when requests are coming from appropriate sources (GitHub or DockerHub)
+	- In the logs when a trigger rule matches its set condition you get the message `P5-hook got matched` When a trigger rule does not match the set condition you recive the message `P5-hook got matched, but didn't get triggered because the trigger rules were not satisfied` when both triggers are successfully matched you recive the message `P5-hook hook triggered successfully`
 
+## Resources
+
+  - Used you videos for the most part. There was one part I asked chatgpt "show me the full path to the webhook service file so I can make changes to it" It gave me this `sudo nano /usr/lib/systemd/system/webhook.service` and I was able to continue from there from the videos.
