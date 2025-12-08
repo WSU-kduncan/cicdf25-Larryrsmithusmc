@@ -1,0 +1,41 @@
+name: Build and Push Docker image to DockerHub
+# now triggers only when a tag is used
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+jobs:
+  build_and_push:
+    name: Build and Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+# create meta data and tags
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: larryrsmith/project5
+          tags: |
+            type=ref,event=tag
+            type=semver,pattern={{version}} # ex 3.4.1
+            type=semver,pattern={{major}} # ex 3
+            type=semver,pattern={{major}}.{{minor}} # ex 3.4
+            latest # for latest
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: ./Project5/web-content
+          file: ./Project5/web-content/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }} 
+
