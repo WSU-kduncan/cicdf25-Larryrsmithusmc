@@ -36,12 +36,19 @@
 
 1. Configuring a webhook Listener on EC2 Instance
   - How to install adnanh's webhook to the EC2 instance
+	- `sudo apt install webhook`
   - How to verify successful installation
+	- `webhook --version`
   - Summary of the webhook definition file
+	- I set up a id name `P5-hook` For the command I gave it the path to my script `/home/ubuntu/depolment.sh` and told it to work out of my `/home/ubuntu` directory. I set up two trigger rules first to check that the repo name in the payload was `larryrsmith/project5` and that it has the push tag `latest`
   - How to verify definition file was loaded by webhook
+	- `webhook -hooks /home/ubuntu/hooks.json -verbose` `[webhook] 2025/12/08 17:43:31 found 1 hook(s) in file` `[webhook] 2025/12/08 17:43:31   loaded: P5-hook`
   - How to verify webhook is receiving payloads that trigger it
+	- `curl http://localhost:9000/hooks/P5-hook` `sudo journalctl -u webhook -f`
 	  - how to monitor logs from running webhook
+		- I just had one instance with the logs opened and sent out request from another instance and watched them come in. 
 	  - what to look for in docker process views
+		- check that the container is running and the time stamps `docker ps -a`
   - LINK to definition file in repository
 2. Configure a webhook Service on EC2 Instance
   - Summary of webhook service file contents

@@ -2,6 +2,30 @@
         {
                 "id": "P5-hook",
                 "execute-command": "/home/ubuntu/deployment.sh",
-                "command-working-directory": "/home/ubuntu"
+                "command-working-directory": "/home/ubuntu",
+                "trigger-rule": {
+                        "and": [
+                                {
+                                "match": {
+                                        "type": "value",
+                                        "parameter": {
+                                                "source": "payload",
+                                                "name": "push_data.tag"
+                                        },
+                                        "value": "latest"
+                                }
+                        },
+                                {
+                                "match": {
+                                        "type": "value",
+                                        "parameter": {
+                                                "source": "payload",
+                                                "name": "repository.repo_name"
+                                        },
+                                        "value": "larryrsmith/project5"
+                                        }
+                                }
+                        ]
+                }
         }
-]
+
