@@ -1,12 +1,12 @@
 ### Documentation
 
-1. EC2 Instance Details: [Used this yml filr](P5.yml)
+1. EC2 Instance Details: [I used this yml file](P5.yml)
   - AMI information 
 	- ami-0360c520857e3138f # Ubuntu Server 24.04 LTS (HVM), SSD Volume Type
   - Instance type 
 	- t2.micro
   - Recommended volume size
-	- I forgot to do this part mine is default 8
+	- I forgot to do this part, mine just used the default 8
   - Security Group configuration
 	- I set this to allow home, vpc, and school ips on port 22. I left the SSHparameter in there and it looks like its allowing all to ssh port 22. I also allowed all ips on ports 80, 8080, and 9000 for our container and hooks.
   - Security Group configuration justification / explanation
@@ -29,7 +29,7 @@
   - Description of the bash script
 	- My bash script stops the container, removes the container to free up the container name, pulls the latest container image from dockerhub, and runs a new container in detached mode, set to restart always on ec2 instance start up, with the name project5, on host port 8080 container port 80, from the lastest image pulled.  
   - How to test / verify that the script successfully performs its taskings
-	- I tested this by making a small change to my web content then ran the script. When it finished I checked the website for its updates to verify it worked.
+	- I tested this by making a small change to my web content. I then ran the script and when it finished I checked the website for its updates to verify that it worked.
   - [Bash script](deployment/deployment.sh)
 
 
