@@ -46,13 +46,19 @@
   - How to verify webhook is receiving payloads that trigger it
 	- `curl http://localhost:9000/hooks/P5-hook` `sudo journalctl -u webhook -f`
 	  - how to monitor logs from running webhook
-		- I just had one instance with the logs opened and sent out request from another instance and watched them come in. 
+		- I just had one instance with the logs opened and sent out request from another instance and watched them come in using `webhook -hooks /home/ubuntu/hooks.json -verbose` Then later I just pushed new tags and watched the logs as they came in using `sudo journalctl -u webhook -f` 
 	  - what to look for in docker process views
-		- check that the container is running and the time stamps `docker ps -a`
-  - LINK to definition file in repository
+		- check that the container is running and the time stamps `docker ps -a` or you could use `docker logs project5` but I didnt do that.
+  - [Definition file](deployment/hooks.json)
 2. Configure a webhook Service on EC2 Instance
   - Summary of webhook service file contents
+	- It has some defult content then the parts that I changed was condition path to the path of my json file under unit and under service I canged the execstart part so on start i uses my hooks and start monitoing logs. 
   - How to enable and start the webhook service
+	- `sudo systemctl enable webhook` `sudo systemctl start webhook` To ensure all the changes to place `sudo systemctl stop webhook` `sudo systemctl daemon-reload` `sudo systemctl start webhook`
   - How to verify webhook service is capturing payloads and triggering bash script
-  - LINK to service file in repository
+	- `sudo journalctl -u webhook -f` checked the logs
+![Logs](webhooklogs.png)
+  - [Service File](deployment/webhook.service.file)
+
+
 
